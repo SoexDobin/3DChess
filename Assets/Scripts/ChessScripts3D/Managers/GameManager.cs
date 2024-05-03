@@ -1,4 +1,5 @@
-﻿using System.Net.WebSockets;
+﻿using System;
+using System.Net.WebSockets;
 using ChessScripts3D.Socket;
 using ChessScripts3D.Web;
 using ChessScripts3D.Web.HTTPSchemas;
@@ -44,13 +45,18 @@ namespace ChessScripts3D.Managers
 
             if (_ws != null)
             {
-                colorDelegate = SetMyColor;
-                opponentInfoDelegate = SetOpponentInfo;
+                colorDelegate -= SetMyColor;
+                colorDelegate += SetMyColor;
+                
+                opponentInfoDelegate -= SetOpponentInfo;
+                opponentInfoDelegate += SetOpponentInfo;
             }
             else
             {
                 Debug.LogError("ChessGameWebSocket is not initialized.");
             }
+            
+            
         }
 
         private void Update()
@@ -60,18 +66,23 @@ namespace ChessScripts3D.Managers
                 Debug.Log(piece.GetChar() + " " + piece);
             }*/
 
-            Debug.Log( game.GetBoards()[0].GetLevel()); // 레벨 < = >보드타입 매칭 
+            /*Debug.Log( game.GetBoards()[0].GetLevel()); // 레벨 < = >보드타입 매칭 
             game.PushBoardMove(new BoardMove(Level.White, Level.Kl3, new Option<PieceType>()));
-            Debug.Log( game.GetBoards()[0].GetLevel());
+            Debug.Log( game.GetBoards()[0].GetLevel());*/
             
             // todo : 피스 불러오기 
+            
+            
+        }
 
+        private void LateUpdate()
+        {
             if (_ws.currentState != GameSocketState.GameInit) return;
             SceneManager.LoadScene("3DChessGameScene");
             SceneManager.sceneLoaded -= LoadSceneInit;
             SceneManager.sceneLoaded += LoadSceneInit;
         }
-        
+
         private void SetMyColor(GetColorAction action) { myColor = action.color; }
 
         private void SetOpponentInfo(UserInfoDto info) { opponentInfo = info; }

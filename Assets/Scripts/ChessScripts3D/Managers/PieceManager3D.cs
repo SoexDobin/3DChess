@@ -10,12 +10,20 @@ namespace ChessScripts3D.Managers
     public class PieceManager3D : SingleTon<PieceManager3D>
     {
         public PieceInit3D init;
-        public PieceDataBase3D dataBase;
+
+        public List<Piece3D> pieces = new List<Piece3D>();
 
         private void Awake()
         {
             init = GetComponent<PieceInit3D>();
-            dataBase = GetComponent<PieceDataBase3D>();
+        }
+
+        public void InitPiece(List<Piece> initPieces)
+        {
+            foreach (var piece in initPieces)
+            {
+                // 피스 Awake or Start 선 생성 이후 GameManager에서 월드 포지션으로 이동 
+            }
         }
     }
 }

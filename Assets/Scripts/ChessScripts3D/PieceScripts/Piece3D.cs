@@ -1,11 +1,13 @@
+using ChessScripts3D.BoardScrips;
 using UnityEngine;
+using WarpSquareEngine;
 
 namespace ChessScripts3D.PieceScripts
 {
     public class Piece3D : MonoBehaviour
     {
-        public PieceData3D pieceData3D;
-    
+        public Square3D square;
+        
         private bool _isClick;
         private MeshRenderer _renderer;
         private Material _outlineMaterial;
@@ -45,5 +47,6 @@ namespace ChessScripts3D.PieceScripts
             mats[1] = _outlineMaterial;
             _renderer.sharedMaterials = mats;
         }
+        
     }
 }
