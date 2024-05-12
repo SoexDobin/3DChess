@@ -50,6 +50,11 @@ namespace ChessScripts3D.BoardScrips
             return Vector3.zero;
         }
 
+        public List<Square3D> GetSquares()
+        {
+            return squares;
+        }
+
         private void SetSquareByBoardType()
         {
             var index = 0;

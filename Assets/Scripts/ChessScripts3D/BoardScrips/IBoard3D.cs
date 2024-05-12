@@ -10,5 +10,7 @@ namespace ChessScripts3D.BoardScrips
     {
         public void InitBoard(Level lev);
         public Vector3 GetWorldSpaceTransform();
+
+        public List<Square3D> GetSquares();
     }
 }

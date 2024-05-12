@@ -60,6 +60,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: aab6eec79277a8d4d910807eea5fc452, type: 2}
+    - target: {fileID: -7511558181221131132, guid: eaf32d7a2a94e624988085d8621e897d, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: aab6eec79277a8d4d910807eea5fc452, type: 2}
+    - target: {fileID: -7511558181221131132, guid: eaf32d7a2a94e624988085d8621e897d, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: aab6eec79277a8d4d910807eea5fc452, type: 2}
     - target: {fileID: 919132149155446097, guid: eaf32d7a2a94e624988085d8621e897d, type: 3}
       propertyPath: m_Name
       value: White_Bishop Variant

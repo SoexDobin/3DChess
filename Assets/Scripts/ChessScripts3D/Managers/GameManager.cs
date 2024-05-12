@@ -96,6 +96,8 @@ namespace ChessScripts3D.Managers
             _cameraManager.setHomePos.Invoke(myColor);
 
             _ws.currentState = GameSocketState.InGamePlaying;
+
+            _pieceManager.InitPiece(game.GetPieces(), _boardManager.boards);
         }
         
     }

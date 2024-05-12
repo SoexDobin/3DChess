@@ -18,7 +18,7 @@ namespace ChessScripts3D.Managers
         public AttackBoard3D blackKingBoard;
         public AttackBoard3D blackQueenBoard;
 
-        private List<IBoard3D> boards = new List<IBoard3D>();
+        public List<IBoard3D> boards = new List<IBoard3D>();
 
         void Awake()
         {

@@ -3,7 +3,6 @@ using ChessScripts3D.InputSystem;
 using ChessScripts3D.PieceScripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using PieceMove = ChessScripts3D.Socket.PieceMove;
 using Square = WarpSquareEngine.Square;
 
 namespace ChessScripts3D.Managers
