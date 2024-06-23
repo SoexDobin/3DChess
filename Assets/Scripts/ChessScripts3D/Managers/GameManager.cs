@@ -3,6 +3,7 @@ using System.Net.WebSockets;
 using ChessScripts3D.Socket;
 using ChessScripts3D.Web;
 using ChessScripts3D.Web.HTTPSchemas;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using WarpSquareEngine;
@@ -12,22 +13,12 @@ namespace ChessScripts3D.Managers
 {
     public class GameManager : SingleTon<GameManager>
     {
-        [Header("ColorDel")]
         public Color myColor;
-        public delegate void ColorDelegate(GetColorAction action);
-        public ColorDelegate colorDelegate;
         
-        [Header("MyInfoDel")]
-        public UserInfoDto myInfo;
-        public delegate void MyInfoDelegate(GetColorAction action);
-        public MyInfoDelegate myInfoDelegate;
+        public GetUserInfo myInfo;
         
-        [Header("OpponentInfoDel")]
-        public UserInfoDto opponentInfo;
-        public delegate void OpponentInfoDelegate(UserInfoDto action);
-        public OpponentInfoDelegate opponentInfoDelegate;
-
-        [Header("Limit Playing")]
+        public GetUserInfo opponentInfo;
+        
         public bool isReady;
         
         public Game game = new Game();
@@ -43,20 +34,9 @@ namespace ChessScripts3D.Managers
         {
             _ws = ChessGameWebSocket.Instance;
 
-            if (_ws != null)
-            {
-                colorDelegate -= SetMyColor;
-                colorDelegate += SetMyColor;
-                
-                opponentInfoDelegate -= SetOpponentInfo;
-                opponentInfoDelegate += SetOpponentInfo;
-            }
-            else
-            {
-                Debug.LogError("ChessGameWebSocket is not initialized.");
-            }
-            
-            
+            _ws.colorDel += SetMyColor;
+            _ws.userInitDel += SetMyInfo;
+            _ws.opponentInitDel += SetOpponentInfo;
         }
 
         private void Update()
@@ -83,9 +63,9 @@ namespace ChessScripts3D.Managers
             SceneManager.sceneLoaded += LoadSceneInit;
         }
 
-        private void SetMyColor(GetColorAction action) { myColor = action.color; }
-
-        private void SetOpponentInfo(UserInfoDto info) { opponentInfo = info; }
+        private void SetMyColor(GetColor action) { myColor = action.color; }
+        private void SetMyInfo(GetUserInfo info) { myInfo = info; }
+        private void SetOpponentInfo(GetUserInfo info) { opponentInfo = info; }
 
         private void LoadSceneInit(Scene scene, LoadSceneMode mode)
         {
