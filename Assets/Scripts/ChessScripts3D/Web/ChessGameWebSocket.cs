@@ -20,13 +20,7 @@ namespace ChessScripts3D.Web
 
         public GameSocketState currentState = GameSocketState.Matching;
 
-<<<<<<< Updated upstream
         private GameManager _gameManager;
-=======
-        public ColorInit ColorDel;
-        public UserDataInit UserInitDel;
-        public OpponentDataInit OpponentInitDel;
->>>>>>> Stashed changes
 
         private void Start()
         {
@@ -73,48 +67,14 @@ namespace ChessScripts3D.Web
 
         private void SetUpAction(MessageEventArgs e)
         {
-<<<<<<< Updated upstream
             if (e.Data.Contains(SocketAction.COLOR.ToString()))
             {
                 var actionObject = JsonUtility.FromJson<GetColorAction>(e.Data);
                 _gameManager.colorDelegate.Invoke(actionObject);
-=======
-            if (e.Data.Contains(SocketAction.ROOM_STATE.ToString()))
-            {
-                var datum = e.Data.Split(",");
-                
-                foreach (var data in datum)
-                {
-                    var checkString = data;
-                    
-                    if (checkString.Contains("roomId"))
-                    {
-                        var actionObject = JsonUtility.FromJson<GetColor>(e.Data);
-                        
-                    }
-                    else if (checkString.Contains("myInfo"))
-                    {
-                        var actionObject = JsonUtility.FromJson<GetUserInfo>(e.Data);
-                        
-                    }
-                    else if (checkString.Contains("matchedUserInfo"))
-                    {
-                        var actionObject = JsonUtility.FromJson<GetUserInfo>(e.Data);
-                        currentState = GameSocketState.GameInit;
-                    }
-                }
-            }
-            
-            if (e.Data.Contains(SocketAction.COLOR.ToString()))
-            {
-                var actionObject = JsonUtility.FromJson<GetColor>(e.Data);
-                ColorDel.Invoke(actionObject);
->>>>>>> Stashed changes
                 currentState = GameSocketState.Matched;
             }
             else if (e.Data.Contains(SocketAction.MATCHED_USER.ToString()))
             {
-<<<<<<< Updated upstream
                 var actionObject = JsonUtility.FromJson<UserInfoDto>(e.Data);
                 _gameManager.opponentInfoDelegate.Invoke(actionObject);
             }
@@ -122,10 +82,6 @@ namespace ChessScripts3D.Web
             {
                 var actionObject = JsonUtility.FromJson<GetInitAction>(e.Data);
                 currentState = GameSocketState.GameInit;
-=======
-                var actionObject = JsonUtility.FromJson<GetUserInfo>(e.Data);
-                UserInitDel.Invoke(actionObject);
->>>>>>> Stashed changes
             }
         }
         

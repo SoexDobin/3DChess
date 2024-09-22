@@ -1,17 +1,11 @@
-<<<<<<< Updated upstream
 ﻿using System.Net.WebSockets;
 using ChessScripts3D.Socket;
 using ChessScripts3D.Web;
 using ChessScripts3D.Web.HTTPSchemas;
-=======
-﻿using ChessScripts3D.Socket;
-using ChessScripts3D.Web;
->>>>>>> Stashed changes
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using warp_square_engine;
-using Color = warp_square_engine.Color;
-
+using WarpSquareEngine;
+using Color = WarpSquareEngine.Color;
 
 namespace ChessScripts3D.Managers
 {
@@ -48,7 +42,6 @@ namespace ChessScripts3D.Managers
         {
             _ws = ChessGameWebSocket.Instance;
 
-<<<<<<< Updated upstream
             if (_ws != null)
             {
                 colorDelegate = SetMyColor;
@@ -58,11 +51,6 @@ namespace ChessScripts3D.Managers
             {
                 Debug.LogError("ChessGameWebSocket is not initialized.");
             }
-=======
-            _ws.ColorDel += SetMyColor;
-            _ws.UserInitDel += SetMyInfo;
-            _ws.OpponentInitDel += SetOpponentInfo;
->>>>>>> Stashed changes
         }
 
         private void Update()
@@ -97,11 +85,6 @@ namespace ChessScripts3D.Managers
             _cameraManager.setHomePos.Invoke(myColor);
 
             _ws.currentState = GameSocketState.InGamePlaying;
-<<<<<<< Updated upstream
-=======
-
-            _pieceManager.InitPiece(game.GetCapturedPieces(), _boardManager.boards);
->>>>>>> Stashed changes
         }
         
     }

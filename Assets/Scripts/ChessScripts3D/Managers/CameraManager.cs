@@ -1,7 +1,6 @@
 using ChessScripts3D.InputSystem;
 using UnityEngine;
-using warp_square_engine;
-using Color = warp_square_engine.Color;
+using Color = WarpSquareEngine.Color;
 
 namespace ChessScripts3D.Managers
 {

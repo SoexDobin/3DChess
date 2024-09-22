@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using ChessScripts3D.Managers;
 using ChessScripts3D.Socket;
 using UnityEngine;
-<<<<<<< Updated upstream:Assets/Scripts/ChessScripts3D/PieceScripts/PieceInit3D.cs
-=======
-using warp_square_engine;
->>>>>>> Stashed changes:Assets/Scripts/ChessScripts3D/PieceScripts/PieceData.cs
 
 namespace ChessScripts3D.PieceScripts
 {

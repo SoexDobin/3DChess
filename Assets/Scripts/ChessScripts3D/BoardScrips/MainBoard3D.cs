@@ -1,12 +1,5 @@
-<<<<<<< Updated upstream
 ﻿using UnityEngine;
 using WarpSquareEngine;
-=======
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
-using warp_square_engine;; 
->>>>>>> Stashed changes
 
 namespace ChessScripts3D.BoardScrips
 {
@@ -17,18 +10,6 @@ namespace ChessScripts3D.BoardScrips
         public void InitBoard(Level lev)
         {
             level = lev;
-<<<<<<< Updated upstream
-=======
-            
-            boardType = level switch
-            {
-                /*Level.White => BoardType.White,
-                Level.Neutral => BoardType.Neutral,
-                Level.Black => BoardType.Black,
-                _ => boardType*/
-            };
-            
->>>>>>> Stashed changes
             transform.position = GetWorldSpaceTransform();
         }
 

@@ -7,13 +7,13 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace warp_square_engine
+namespace WarpSquareEngine
 {
     internal static class RustString {
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void c_string_delete(IntPtr c_char_ptr);
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* *mut RustString */ IntPtr c_str_u16_to_string(/* *const u16 */ IntPtr c_string_ptr);
 
         internal static string rust_to_dotnet(/* *const u16 */ IntPtr c_string_ptr)
@@ -38,6 +38,10 @@ namespace warp_square_engine
         public Error(string message) : base(message) { }
     }
 
+    
+    public enum BoardType {
+        White = 0,Neutral = 1,Black = 2,WhiteQueen = 3,WhiteKing = 4,BlackQueen = 5,BlackKing = 6
+    }
     
     public enum PieceType {
         Pawn = 0,Knight = 1,Bishop = 2,Rook = 3,Queen = 4,King = 5
@@ -78,14 +82,14 @@ namespace warp_square_engine
             }
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void BitBoard_delete(IntPtr __this);
 
         ~BitBoard() {
             DoDispose();
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern uint BitBoard_getRank(/* BitBoard */ IntPtr __this);
 
         
@@ -97,7 +101,7 @@ namespace warp_square_engine
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern uint BitBoard_getFile(/* BitBoard */ IntPtr __this);
 
         
@@ -109,7 +113,7 @@ namespace warp_square_engine
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern uint BitBoard_getLevel(/* BitBoard */ IntPtr __this);
 
         
@@ -121,7 +125,7 @@ namespace warp_square_engine
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* BitBoard */ IntPtr BitBoard_fromSquare(/* Square */ IntPtr square);
 
         
@@ -132,7 +136,7 @@ namespace warp_square_engine
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* Square */ IntPtr BitBoard_intoSquare(/* BitBoard */ IntPtr __this);
 
         
@@ -144,7 +148,7 @@ namespace warp_square_engine
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* BitBoard */ IntPtr BitBoard_fromHex(/* RustString */ IntPtr hex);
 
         
@@ -155,7 +159,7 @@ namespace warp_square_engine
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* const c_str_u16 */ IntPtr BitBoard_toHex(/* BitBoard */ IntPtr __this);
 
         
@@ -167,7 +171,7 @@ namespace warp_square_engine
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* BitBoard */ IntPtr BitBoard_removeLevel(/* BitBoard */ IntPtr __this);
 
         
@@ -200,14 +204,14 @@ namespace warp_square_engine
             }
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void Piece_delete(IntPtr __this);
 
         ~Piece() {
             DoDispose();
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern uint Piece_getPieceType(/* Piece */ IntPtr __this);
 
         
@@ -219,7 +223,7 @@ namespace warp_square_engine
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern uint Piece_getColor(/* Piece */ IntPtr __this);
 
         
@@ -231,7 +235,7 @@ namespace warp_square_engine
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* BitBoard */ IntPtr Piece_getPosition(/* Piece */ IntPtr __this);
 
         
@@ -243,7 +247,7 @@ namespace warp_square_engine
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* Square */ IntPtr Piece_getSquare(/* Piece */ IntPtr __this);
 
         
@@ -255,7 +259,7 @@ namespace warp_square_engine
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* const c_str_u16 */ IntPtr Piece_getChar(/* Piece */ IntPtr __this);
 
         
@@ -288,14 +292,14 @@ namespace warp_square_engine
             }
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void PieceMove_delete(IntPtr __this);
 
         ~PieceMove() {
             DoDispose();
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* PieceMove */ IntPtr PieceMove_new_move(/* Square */ IntPtr source, /* Square */ IntPtr destination, /* Option */ IntPtr promotion);
 
         
@@ -308,7 +312,7 @@ namespace warp_square_engine
             
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* Square */ IntPtr PieceMove_getSource(/* PieceMove */ IntPtr __this);
 
         
@@ -320,7 +324,7 @@ namespace warp_square_engine
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* Square */ IntPtr PieceMove_getDestination(/* PieceMove */ IntPtr __this);
 
         
@@ -332,7 +336,7 @@ namespace warp_square_engine
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* Option */ IntPtr PieceMove_getPromotion(/* PieceMove */ IntPtr __this);
 
         
@@ -365,14 +369,14 @@ namespace warp_square_engine
             }
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void BoardMove_delete(IntPtr __this);
 
         ~BoardMove() {
             DoDispose();
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* BoardMove */ IntPtr BoardMove_new(uint source, uint destination, /* Option */ IntPtr promotion);
 
         
@@ -385,7 +389,7 @@ namespace warp_square_engine
             
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern uint BoardMove_getSource(/* BoardMove */ IntPtr __this);
 
         
@@ -397,7 +401,7 @@ namespace warp_square_engine
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern uint BoardMove_getDestination(/* BoardMove */ IntPtr __this);
 
         
@@ -409,7 +413,7 @@ namespace warp_square_engine
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* Option */ IntPtr BoardMove_getPromotion(/* BoardMove */ IntPtr __this);
 
         
@@ -442,14 +446,14 @@ namespace warp_square_engine
             }
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void Square_delete(IntPtr __this);
 
         ~Square() {
             DoDispose();
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* Square */ IntPtr Square_new(uint rank, uint file, uint level);
 
         
@@ -462,7 +466,7 @@ namespace warp_square_engine
             
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern uint Square_getRank(/* Square */ IntPtr __this);
 
         
@@ -474,7 +478,7 @@ namespace warp_square_engine
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern uint Square_getFile(/* Square */ IntPtr __this);
 
         
@@ -486,7 +490,7 @@ namespace warp_square_engine
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern uint Square_getLevel(/* Square */ IntPtr __this);
 
         
@@ -494,6 +498,70 @@ namespace warp_square_engine
             var __this_0 = this.nativePtr;
 
             var __ret_0 = Square_getLevel(__this_0);
+            var __ret_1 = (Level)__ret_0;
+            return __ret_1;
+        }
+} // class
+
+    
+    public class Board: IDisposable {
+        internal IntPtr nativePtr;
+
+        internal Board(IntPtr nativePtr) {
+            this.nativePtr = nativePtr;
+        }
+
+        public void Dispose() {
+            DoDispose();
+            GC.SuppressFinalize(this);
+        }
+
+        private void DoDispose() {
+            if (nativePtr != IntPtr.Zero) {
+                Board_delete(nativePtr);
+                nativePtr = IntPtr.Zero;
+            }
+        }
+
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void Board_delete(IntPtr __this);
+
+        ~Board() {
+            DoDispose();
+        }
+
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern /* Board */ IntPtr Board_new(uint board_type, uint level);
+
+        
+        public  Board (BoardType board_type_0, Level level_0) {
+            var board_type_1 = (uint)board_type_0;
+            var level_1 = (uint)level_0;
+            this.nativePtr = Board_new(board_type_1, level_1);
+            
+            
+        }
+
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern uint Board_getBoardType(/* Board */ IntPtr __this);
+
+        
+        public  BoardType GetBoardType() {
+            var __this_0 = this.nativePtr;
+
+            var __ret_0 = Board_getBoardType(__this_0);
+            var __ret_1 = (BoardType)__ret_0;
+            return __ret_1;
+        }
+
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern uint Board_getLevel(/* Board */ IntPtr __this);
+
+        
+        public  Level GetLevel() {
+            var __this_0 = this.nativePtr;
+
+            var __ret_0 = Board_getLevel(__this_0);
             var __ret_1 = (Level)__ret_0;
             return __ret_1;
         }
@@ -519,14 +587,14 @@ namespace warp_square_engine
             }
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void Game_delete(IntPtr __this);
 
         ~Game() {
             DoDispose();
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* Game */ IntPtr Game_new();
 
         
@@ -537,7 +605,7 @@ namespace warp_square_engine
             
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* Option */ IntPtr Game_getAttackSquares(/* Game */ IntPtr __this, /* Square */ IntPtr square);
 
         
@@ -549,7 +617,7 @@ var square_1 = square_0.nativePtr;
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte Game_legalPieceMove(/* Game */ IntPtr __this, /* PieceMove */ IntPtr pieceMove);
 
         
@@ -561,7 +629,7 @@ var pieceMove_1 = pieceMove_0.nativePtr;
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte Game_legalBoardMove(/* Game */ IntPtr __this, /* BoardMove */ IntPtr boardMove);
 
         
@@ -573,43 +641,43 @@ var boardMove_1 = boardMove_0.nativePtr;
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void Game_pushPieceMove(/* Game */ IntPtr __this, /* PieceMove */ IntPtr pieceMove);
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern byte Game_pushPieceMove(/* Game */ IntPtr __this, /* PieceMove */ IntPtr pieceMove);
 
         
-        public  void PushPieceMove(/* ref */ PieceMove pieceMove_0) {
+        public  bool PushPieceMove(/* ref */ PieceMove pieceMove_0) {
             var __this_0 = this.nativePtr;
 var pieceMove_1 = pieceMove_0.nativePtr;
-            Game_pushPieceMove(__this_0, pieceMove_1);
-            
-            
+            var __ret_0 = Game_pushPieceMove(__this_0, pieceMove_1);
+            var __ret_1 = (__ret_0 != 0);
+            return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void Game_pushBoardMove(/* Game */ IntPtr __this, /* BoardMove */ IntPtr boardMove);
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern byte Game_pushBoardMove(/* Game */ IntPtr __this, /* BoardMove */ IntPtr boardMove);
 
         
-        public  void PushBoardMove(/* ref */ BoardMove boardMove_0) {
+        public  bool PushBoardMove(/* ref */ BoardMove boardMove_0) {
             var __this_0 = this.nativePtr;
 var boardMove_1 = boardMove_0.nativePtr;
-            Game_pushBoardMove(__this_0, boardMove_1);
-            
-            
+            var __ret_0 = Game_pushBoardMove(__this_0, boardMove_1);
+            var __ret_1 = (__ret_0 != 0);
+            return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void Game_popMove(/* Game */ IntPtr __this);
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern byte Game_popMove(/* Game */ IntPtr __this);
 
         
-        public  void PopMove() {
+        public  bool PopMove() {
             var __this_0 = this.nativePtr;
 
-            Game_popMove(__this_0);
-            
-            
+            var __ret_0 = Game_popMove(__this_0);
+            var __ret_1 = (__ret_0 != 0);
+            return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void Game_print(/* Game */ IntPtr __this);
 
         
@@ -621,7 +689,7 @@ var boardMove_1 = boardMove_0.nativePtr;
             
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern uint Game_getTurn(/* Game */ IntPtr __this);
 
         
@@ -633,7 +701,7 @@ var boardMove_1 = boardMove_0.nativePtr;
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern uint Game_getFullMoveNumber(/* Game */ IntPtr __this);
 
         
@@ -645,7 +713,7 @@ var boardMove_1 = boardMove_0.nativePtr;
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern uint Game_getHalfMoveClock(/* Game */ IntPtr __this);
 
         
@@ -657,7 +725,19 @@ var boardMove_1 = boardMove_0.nativePtr;
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern /* Option */ IntPtr Game_getPiece(/* Game */ IntPtr __this, /* Square */ IntPtr square);
+
+        
+        public  Option<Piece> GetPiece(/* ref */ Square square_0) {
+            var __this_0 = this.nativePtr;
+var square_1 = square_0.nativePtr;
+            var __ret_0 = Game_getPiece(__this_0, square_1);
+            var __ret_1 = RustOptionPiece.rust_to_dotnet(__ret_0);
+            return __ret_1;
+        }
+
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* Option */ IntPtr Game_getPieces(/* Game */ IntPtr __this);
 
         
@@ -669,7 +749,19 @@ var boardMove_1 = boardMove_0.nativePtr;
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern /* Option */ IntPtr Game_getPiecesWithBoardType(/* Game */ IntPtr __this, uint boardType);
+
+        
+        public  System.Collections.Generic.List<Piece> GetPiecesWithBoardType(BoardType boardType_0) {
+            var __this_0 = this.nativePtr;
+var boardType_1 = (uint)boardType_0;
+            var __ret_0 = Game_getPiecesWithBoardType(__this_0, boardType_1);
+            var __ret_1 = RustVecPiece.rust_to_dotnet(__ret_0);
+            return __ret_1;
+        }
+
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* Option */ IntPtr Game_getCapturedPieces(/* Game */ IntPtr __this);
 
         
@@ -681,7 +773,19 @@ var boardMove_1 = boardMove_0.nativePtr;
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern /* Option */ IntPtr Game_getBoards(/* Game */ IntPtr __this);
+
+        
+        public  System.Collections.Generic.List<Board> GetBoards() {
+            var __this_0 = this.nativePtr;
+
+            var __ret_0 = Game_getBoards(__this_0);
+            var __ret_1 = RustVecBoard.rust_to_dotnet(__ret_0);
+            return __ret_1;
+        }
+
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte Game_isCheck(/* Game */ IntPtr __this);
 
         
@@ -693,7 +797,7 @@ var boardMove_1 = boardMove_0.nativePtr;
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte Game_isCheckmate(/* Game */ IntPtr __this);
 
         
@@ -705,7 +809,19 @@ var boardMove_1 = boardMove_0.nativePtr;
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern byte Game_isStalemate(/* Game */ IntPtr __this);
+
+        
+        public  bool IsStalemate() {
+            var __this_0 = this.nativePtr;
+
+            var __ret_0 = Game_isStalemate(__this_0);
+            var __ret_1 = (__ret_0 != 0);
+            return __ret_1;
+        }
+
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte Game_isPromotion(/* Game */ IntPtr __this, /* PieceMove */ IntPtr pieceMove);
 
         
@@ -717,7 +833,7 @@ var pieceMove_1 = pieceMove_0.nativePtr;
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte Game_isEnPassant(/* Game */ IntPtr __this, /* PieceMove */ IntPtr pieceMove);
 
         
@@ -729,7 +845,7 @@ var pieceMove_1 = pieceMove_0.nativePtr;
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte Game_isKingSideCastling(/* Game */ IntPtr __this, /* PieceMove */ IntPtr pieceMove);
 
         
@@ -741,7 +857,7 @@ var pieceMove_1 = pieceMove_0.nativePtr;
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte Game_isQueenSideCastling(/* Game */ IntPtr __this, /* PieceMove */ IntPtr pieceMove);
 
         
@@ -753,7 +869,7 @@ var pieceMove_1 = pieceMove_0.nativePtr;
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte Game_isCastling(/* Game */ IntPtr __this, /* PieceMove */ IntPtr pieceMove);
 
         
@@ -765,7 +881,7 @@ var pieceMove_1 = pieceMove_0.nativePtr;
             return __ret_1;
         }
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte Game_isCapture(/* Game */ IntPtr __this, /* PieceMove */ IntPtr pieceMove);
 
         
@@ -778,17 +894,111 @@ var pieceMove_1 = pieceMove_0.nativePtr;
         }
 } // class
 
+    public static class RustVecPiece {
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr RustVecPiece_new();
+        
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void RustVecPiece_push(IntPtr vecPtr, /* Piece */ IntPtr element);
+
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern /* Option<i_type> */ IntPtr RustVecPiece_iter_next(IntPtr iterPtr);
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void RustVecPiece_iter_delete(IntPtr iterPtr);
+
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern /* Piece */ IntPtr RustVecPiece_option_take(IntPtr optPtr);
+
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern byte RustVecPiece_option_is_some(IntPtr optPtr);
+
+
+        internal static System.Collections.Generic.List<Piece> rust_to_dotnet(IntPtr iterPtr) {
+            var list = new System.Collections.Generic.List<Piece>();
+            while (true)
+            {
+                var next_rust_opt = RustVecPiece.RustVecPiece_iter_next(iterPtr);
+                if (RustVecPiece_option_is_some(next_rust_opt) == 0)
+                {
+                    break;
+                }
+                var value_rust = RustVecPiece_option_take(next_rust_opt);
+                var value = new Piece(value_rust);
+                list.Add(value);
+            }
+            RustVecPiece_iter_delete(iterPtr);
+            return list;
+        }
+
+        internal static IntPtr dotnet_to_rust(System.Collections.Generic.List<Piece> list) {
+            var vec = RustVecPiece_new();
+            foreach (var element in list)
+            {
+                var i_element = element.nativePtr;
+                RustVecPiece.RustVecPiece_push(vec, i_element);
+            }
+            return vec;
+        }
+    }
+        
+    public static class RustVecBoard {
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr RustVecBoard_new();
+        
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void RustVecBoard_push(IntPtr vecPtr, /* Board */ IntPtr element);
+
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern /* Option<i_type> */ IntPtr RustVecBoard_iter_next(IntPtr iterPtr);
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void RustVecBoard_iter_delete(IntPtr iterPtr);
+
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern /* Board */ IntPtr RustVecBoard_option_take(IntPtr optPtr);
+
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern byte RustVecBoard_option_is_some(IntPtr optPtr);
+
+
+        internal static System.Collections.Generic.List<Board> rust_to_dotnet(IntPtr iterPtr) {
+            var list = new System.Collections.Generic.List<Board>();
+            while (true)
+            {
+                var next_rust_opt = RustVecBoard.RustVecBoard_iter_next(iterPtr);
+                if (RustVecBoard_option_is_some(next_rust_opt) == 0)
+                {
+                    break;
+                }
+                var value_rust = RustVecBoard_option_take(next_rust_opt);
+                var value = new Board(value_rust);
+                list.Add(value);
+            }
+            RustVecBoard_iter_delete(iterPtr);
+            return list;
+        }
+
+        internal static IntPtr dotnet_to_rust(System.Collections.Generic.List<Board> list) {
+            var vec = RustVecBoard_new();
+            foreach (var element in list)
+            {
+                var i_element = element.nativePtr;
+                RustVecBoard.RustVecBoard_push(vec, i_element);
+            }
+            return vec;
+        }
+    }
+        
     internal static class RustOptionPieceType {
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern IntPtr RustOptionPieceType_new_none();
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern IntPtr RustOptionPieceType_new_some(uint value);
         
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern uint RustOptionPieceType_take(IntPtr optPtr);
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte RustOptionPieceType_is_some(IntPtr optPtr);
 
         internal static Option<PieceType> rust_to_dotnet(IntPtr optPtr)
@@ -873,69 +1083,63 @@ var pieceMove_1 = pieceMove_0.nativePtr;
             }
         }        
         
-    public static class RustVecPiece {
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr RustVecPiece_new();
+    internal static class RustOptionPiece {
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr RustOptionPiece_new_none();
+
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr RustOptionPiece_new_some(/* Piece */ IntPtr value);
         
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void RustVecPiece_push(IntPtr vecPtr, /* Piece */ IntPtr element);
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern /* Piece */ IntPtr RustOptionPiece_take(IntPtr optPtr);
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern /* Option<i_type> */ IntPtr RustVecPiece_iter_next(IntPtr iterPtr);
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void RustVecPiece_iter_delete(IntPtr iterPtr);
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern byte RustOptionPiece_is_some(IntPtr optPtr);
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern /* Piece */ IntPtr RustVecPiece_option_take(IntPtr optPtr);
-
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte RustVecPiece_option_is_some(IntPtr optPtr);
-
-
-        internal static System.Collections.Generic.List<Piece> rust_to_dotnet(IntPtr iterPtr) {
-            var list = new System.Collections.Generic.List<Piece>();
-            while (true)
+        internal static Option<Piece> rust_to_dotnet(IntPtr optPtr)
+        {
+            if (RustOptionPiece_is_some(optPtr) != 0)
             {
-                var next_rust_opt = RustVecPiece.RustVecPiece_iter_next(iterPtr);
-                if (RustVecPiece_option_is_some(next_rust_opt) == 0)
-                {
-                    break;
-                }
-                var value_rust = RustVecPiece_option_take(next_rust_opt);
-                var value = new Piece(value_rust);
-                list.Add(value);
+                var value_0 = RustOptionPiece_take(optPtr);
+                var value_1 = new Piece(value_0);
+                return new Option<Piece>(value_1);
             }
-            RustVecPiece_iter_delete(iterPtr);
-            return list;
+            else
+            {
+                return new Option<Piece>();
+            }
         }
 
-        internal static IntPtr dotnet_to_rust(System.Collections.Generic.List<Piece> list) {
-            var vec = RustVecPiece_new();
-            foreach (var element in list)
+        internal static IntPtr dotnet_to_rust(Option<Piece> opt)
+        {
+            if (opt.IsSome)
             {
-                var i_element = element.nativePtr;
-                RustVecPiece.RustVecPiece_push(vec, i_element);
+                var value_0 = opt.Value.nativePtr;
+                return RustOptionPiece_new_some(value_0);
             }
-            return vec;
+            else
+            {
+                return RustOptionPiece_new_none();
+            }
         }
     }
-        
+    
     public static class RustVecSquare {
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern IntPtr RustVecSquare_new();
         
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void RustVecSquare_push(IntPtr vecPtr, /* Square */ IntPtr element);
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* Option<i_type> */ IntPtr RustVecSquare_iter_next(IntPtr iterPtr);
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void RustVecSquare_iter_delete(IntPtr iterPtr);
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern /* Square */ IntPtr RustVecSquare_option_take(IntPtr optPtr);
 
-        [DllImport("warp_square_engine_native", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("warp_square_engine", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte RustVecSquare_option_is_some(IntPtr optPtr);
 
 
