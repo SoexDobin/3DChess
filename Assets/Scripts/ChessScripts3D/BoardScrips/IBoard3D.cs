@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Cinemachine;
 using UnityEngine;
-using WarpSquareEngine;
+using warp_square_engine;
 
 namespace ChessScripts3D.BoardScrips
 {

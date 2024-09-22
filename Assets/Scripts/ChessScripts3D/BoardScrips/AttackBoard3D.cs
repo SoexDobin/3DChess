@@ -1,5 +1,12 @@
+<<<<<<< Updated upstream
 ﻿using UnityEngine;
 using WarpSquareEngine;
+=======
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+using warp_square_engine;
+>>>>>>> Stashed changes
 
 namespace ChessScripts3D.BoardScrips
 {

@@ -222,13 +222,24 @@ MonoBehaviour:
   myColor: 0
   myTurn: 0
   myInfo:
-    userName: 
-    tier: 0
-    score: 0
+    action: 0
+    info:
+      userName: 
+      tier: 0
+      score: 0
   opponentInfo:
+<<<<<<< Updated upstream
     userName: 
     tier: 0
     score: 0
+=======
+    action: 0
+    info:
+      userName: 
+      tier: 0
+      score: 0
+  isReady: 0
+>>>>>>> Stashed changes
 --- !u!1 &29162513
 GameObject:
   m_ObjectHideFlags: 0
@@ -5423,6 +5434,10 @@ PrefabInstance:
     - target: {fileID: 3395498090555970998, guid: 4a9b89beba39ec34b82c7bfb1c176cc0, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035919976807862587, guid: 4a9b89beba39ec34b82c7bfb1c176cc0, type: 3}
+      propertyPath: m_Volume
+      value: 0.499
       objectReference: {fileID: 0}
     - target: {fileID: 5035919976807862587, guid: 4a9b89beba39ec34b82c7bfb1c176cc0, type: 3}
       propertyPath: m_Enabled

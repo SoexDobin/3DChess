@@ -3,8 +3,12 @@ using ChessScripts3D.InputSystem;
 using ChessScripts3D.PieceScripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
+<<<<<<< Updated upstream
 using PieceMove = ChessScripts3D.Socket.PieceMove;
 using Square = WarpSquareEngine.Square;
+=======
+using warp_square_engine;
+>>>>>>> Stashed changes
 
 namespace ChessScripts3D.Managers
 {

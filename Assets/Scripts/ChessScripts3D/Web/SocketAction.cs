@@ -1,6 +1,11 @@
 using System;
 using System.Collections.Generic;
+<<<<<<< Updated upstream
 using WarpSquareEngine;
+=======
+using ChessScripts3D.Web.HTTPSchemas;
+using warp_square_engine;
+>>>>>>> Stashed changes
 
 namespace ChessScripts3D.Socket
 {
