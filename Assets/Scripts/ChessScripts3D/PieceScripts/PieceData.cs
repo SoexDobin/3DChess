@@ -3,30 +3,77 @@ using System.Collections.Generic;
 using ChessScripts3D.Managers;
 using ChessScripts3D.Socket;
 using UnityEngine;
+using WarpSquareEngine;
 
 namespace ChessScripts3D.PieceScripts
 {
-    public class PieceInit3D : MonoBehaviour
+    public class PieceData : MonoBehaviour
     {
-        [Header("검정 피스")][Space]
-        public GameObject blackPawn;
-        public GameObject blackBishop;
-        public GameObject blackKnight;
-        public GameObject blackQueen;
-        public GameObject blackKing;
-        public GameObject blackRook;
         [Header("흰색 피스")][Space]
-        public GameObject whitePawn;
-        public GameObject whiteBishop;
-        public GameObject whiteKnight;
-        public GameObject whiteQueen;
-        public GameObject whiteKing;
-        public GameObject whiteRook;
+        public Piece3D whitePawn;
+        public Piece3D whiteBishop;
+        public Piece3D whiteKnight;
+        public Piece3D whiteQueen;
+        public Piece3D whiteKing;
+        public Piece3D whiteRook;
+        
+        [Header("검정 피스")][Space]
+        public Piece3D blackPawn;
+        public Piece3D blackBishop;
+        public Piece3D blackKnight;
+        public Piece3D blackQueen;
+        public Piece3D blackKing;
+        public Piece3D blackRook;
+        
 
         public void SetClickMask(string color)
         {
             if (color == "Black") ClickInputs.Instance.pieceMask = LayerMask.GetMask("BlackPiece");
             if (color == "White") ClickInputs.Instance.pieceMask = LayerMask.GetMask("WhitePiece");   
+        }
+
+        public Piece3D InstantiateWhitePiece(Piece piece)
+        {
+            switch (piece.GetPieceType())
+            {
+                case PieceType.Pawn:
+                    return Instantiate(whitePawn);
+                case PieceType.Knight:
+                    return Instantiate(whiteKnight);
+                case PieceType.Bishop:
+                    return Instantiate(whiteBishop);
+                case PieceType.Rook:
+                    return Instantiate(whiteRook);
+                case PieceType.Queen:
+                    return Instantiate(whiteQueen);
+                case PieceType.King:
+                    return Instantiate(whiteKing);
+            }
+            
+            Debug.LogError("There is any type.");
+            return null;
+        }
+
+        public Piece3D InstantiateBlackPiece(Piece piece)
+        {
+            switch (piece.GetPieceType())
+            {
+                case PieceType.Pawn:
+                    return Instantiate(blackPawn);
+                case PieceType.Knight:                
+                    return Instantiate(blackKnight);
+                case PieceType.Bishop:                
+                    return Instantiate(blackBishop);
+                case PieceType.Rook:
+                    return Instantiate(blackRook);
+                case PieceType.Queen:               
+                    return Instantiate(blackQueen);
+                case PieceType.King:
+                    return Instantiate(blackKing);
+            }
+            
+            Debug.LogError("There is any type.");
+            return null;
         }
         
         /*public void InitPiece(List<InitData> initList, PieceDataBase3D dataBase3D)

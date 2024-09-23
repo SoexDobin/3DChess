@@ -1,11 +1,13 @@
+using ChessScripts3D.BoardScrips;
 using UnityEngine;
+using WarpSquareEngine;
 
 namespace ChessScripts3D.PieceScripts
 {
     public class Piece3D : MonoBehaviour
     {
-        public PieceData3D pieceData3D;
-    
+        public ChessSquare chessSquare;
+        
         private bool _isClick;
         private MeshRenderer _renderer;
         private Material _outlineMaterial;
@@ -14,9 +16,12 @@ namespace ChessScripts3D.PieceScripts
         void Start()
         {
             _renderer = GetComponent<MeshRenderer>();
+            
             var mat = _renderer.sharedMaterials;
+            
             _outlineMaterial = mat[1];
             _defaultMaterial = mat[0];
+            
             HighlightOff();
         }
 
@@ -44,6 +49,18 @@ namespace ChessScripts3D.PieceScripts
             Material[] mats = _renderer.sharedMaterials;
             mats[1] = _outlineMaterial;
             _renderer.sharedMaterials = mats;
+        }
+        
+        public void SetSquare(File _file, Rank _rank, Level _level)
+        {
+            chessSquare.file = _file;
+            chessSquare.rank = _rank;
+            chessSquare.level = _level;
+        }
+        
+        public void SetSquare(Square initSquare)
+        {
+            chessSquare = new ChessSquare(initSquare);
         }
     }
 }

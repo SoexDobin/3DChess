@@ -1,3 +1,5 @@
+using ChessScripts3D.PieceScripts;
+using JetBrains.Annotations;
 using UnityEngine;
 using WarpSquareEngine;
 
@@ -5,15 +7,25 @@ namespace ChessScripts3D.BoardScrips
 {
     public class Square3D : MonoBehaviour
     {
-        public File file;
-        public Rank rank;
-        public Level level;
+        [CanBeNull] public Piece3D locatedPiece;
 
-        public void InitSquare(Square square)
+        public ChessSquare chessSquare;
+
+        public void SetSquare(File _file, Rank _rank, Level _level)
         {
-            file = square.GetFile();
-            rank = square.GetRank();
-            level = square.GetLevel();
+            if (chessSquare is null)
+            {
+                chessSquare = new ChessSquare(_file, _rank, _level);
+            }
+            
+            chessSquare.file = _file;
+            chessSquare.rank = _rank;
+            chessSquare.level = _level;
         }
+
+        public void SetSquare(Square initSquare)
+        {
+            chessSquare.SetSquare(initSquare);
+        } 
     }
 }

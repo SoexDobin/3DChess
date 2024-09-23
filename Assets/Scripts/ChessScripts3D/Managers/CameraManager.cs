@@ -74,6 +74,9 @@ namespace ChessScripts3D.Managers
             
             _camTransform.position = _homePoint;
             _camTransform.rotation = _homeRotate;
+            
+            Debug.Log(_homePoint);
+            Debug.Log(_homeRotate);
         }
 
         private void CameraMoving()
