@@ -16,7 +16,6 @@ namespace ChessScripts3D.Managers
         public Color myColor;
         
         public GetUserInfo myInfo;
-        
         public GetUserInfo opponentInfo;
         
         public bool isReady;
@@ -33,10 +32,6 @@ namespace ChessScripts3D.Managers
         private void Awake()
         {
             _ws = ChessGameWebSocket.Instance;
-
-            _ws.colorDel += SetMyColor;
-            _ws.userInitDel += SetMyInfo;
-            _ws.opponentInitDel += SetOpponentInfo;
         }
 
         private void Update()
@@ -63,9 +58,9 @@ namespace ChessScripts3D.Managers
             SceneManager.sceneLoaded += LoadSceneInit;
         }
 
-        private void SetMyColor(GetColor action) { myColor = action.color; }
-        private void SetMyInfo(GetUserInfo info) { myInfo = info; }
-        private void SetOpponentInfo(GetUserInfo info) { opponentInfo = info; }
+        public void SetMyColor(GetColor action) { myColor = action.color; }
+        public void SetMyInfo(GetUserInfo info) { myInfo = info; }
+        public void SetOpponentInfo(GetUserInfo info) { opponentInfo = info; }
 
         private void LoadSceneInit(Scene scene, LoadSceneMode mode)
         {

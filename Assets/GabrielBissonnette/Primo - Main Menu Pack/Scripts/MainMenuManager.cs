@@ -457,6 +457,7 @@ public class MainMenuManager : MonoBehaviour
         
         StartCoroutine(webRequest.login.LoginReq(loginData, req =>
         {
+            Debug.Log(req.result);
             if (req.result == Result.Success)
             {
                 var auth = req.GetResponseHeader(WebAPIData.GetAuthKey());

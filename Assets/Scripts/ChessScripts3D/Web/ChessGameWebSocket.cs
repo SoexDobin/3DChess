@@ -5,10 +5,6 @@ using WebSocketSharp;
 
 namespace ChessScripts3D.Web
 {
-    public delegate void ColorInit(GetColor myColor);
-    public delegate void UserDataInit(GetUserInfo info);
-    public delegate void OpponentDataInit(GetUserInfo info);
-    
     public enum GameSocketState
     {
         Matching,
@@ -22,10 +18,6 @@ namespace ChessScripts3D.Web
         public WebSocket socket;
 
         public GameSocketState currentState = GameSocketState.Matching;
-
-        public ColorInit colorDel;
-        public UserDataInit userInitDel;
-        public OpponentDataInit opponentInitDel;
 
         private void Start()
         {
@@ -61,6 +53,8 @@ namespace ChessScripts3D.Web
             socket = new WebSocket(WebAPIData.SocketUrl + $"/game/start?token={auth}");
 
             socket.Connect();
+            
+            Debug.Log("in");
         }
 
         public void OnDisable()
@@ -74,6 +68,8 @@ namespace ChessScripts3D.Web
             {
                 var datum = e.Data.Split(",");
                 
+                Debug.Log("in2");
+                
                 foreach (var data in datum)
                 {
                     var checkString = data;
@@ -81,33 +77,21 @@ namespace ChessScripts3D.Web
                     if (checkString.Contains("roomId"))
                     {
                         var actionObject = JsonUtility.FromJson<GetColor>(e.Data);
-                        
+                        GameManager.Instance.SetMyColor(actionObject);
                     }
                     else if (checkString.Contains("myInfo"))
                     {
                         var actionObject = JsonUtility.FromJson<GetUserInfo>(e.Data);
+                        GameManager.Instance.SetMyInfo(actionObject);
                         
                     }
                     else if (checkString.Contains("matchedUserInfo"))
                     {
                         var actionObject = JsonUtility.FromJson<GetUserInfo>(e.Data);
-                        
+                        GameManager.Instance.SetOpponentInfo(actionObject);
                     }
                 }
             }
-            
-            if (e.Data.Contains(SocketAction.COLOR.ToString()))
-            {
-                var actionObject = JsonUtility.FromJson<GetColor>(e.Data);
-                colorDel.Invoke(actionObject);
-                currentState = GameSocketState.Matched;
-            }
-            else if (e.Data.Contains(SocketAction.MATCHED_USER.ToString()))
-            {
-                var actionObject = JsonUtility.FromJson<GetUserInfo>(e.Data);
-                userInitDel.Invoke(actionObject);
-            }
         }
-        
     }
 }

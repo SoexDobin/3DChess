@@ -5,8 +5,8 @@ namespace ChessScripts3D.Web
     [Serializable]
     public static class WebAPIData
     {
-        private const string _url = "https://3dchess.shop";
-        private const string _socketUrl = "ws://3dchess.shop";
+        private const string _url = "https://3dchess.store";
+        private const string _socketUrl = "ws://3dchess.store";
         public static string Url => _url;
         public static string SocketUrl => _socketUrl;
         
