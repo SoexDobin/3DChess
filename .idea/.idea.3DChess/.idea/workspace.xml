@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a16e4fa-f44f-42ef-b4d1-88d948fd37ab" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.3DChess/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.3DChess/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.3DChess/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.3DChess/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GabrielBissonnette/Primo - Main Menu Pack/Scripts/MainMenuManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GabrielBissonnette/Primo - Main Menu Pack/Scripts/MainMenuManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/ChessGameWebSocket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/ChessGameWebSocket.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/WebAPIData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/WebAPIData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/WebRequest/LoginRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/WebRequest/LoginRequest.cs" afterDir="false" />
-    </list>
+    <list default="true" id="3a16e4fa-f44f-42ef-b4d1-88d948fd37ab" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -291,6 +283,7 @@
       <workItem from="1718983034434" duration="2171000" />
       <workItem from="1727074123412" duration="934000" />
       <workItem from="1727075925177" duration="734000" />
+      <workItem from="1727077983283" duration="376000" />
     </task>
     <servers />
   </component>
