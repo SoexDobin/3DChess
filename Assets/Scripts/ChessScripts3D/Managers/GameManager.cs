@@ -31,7 +31,7 @@ namespace ChessScripts3D.Managers
         
         private void Awake()
         {
-            _ws = ChessGameWebSocket.Instance;
+            _ws = ChessGameWebSocket.instance;
         }
 
         private void Update()
@@ -64,9 +64,9 @@ namespace ChessScripts3D.Managers
 
         private void LoadSceneInit(Scene scene, LoadSceneMode mode)
         {
-            _cameraManager = CameraManager.Instance;
-            _boardManager = BoardManager3D.Instance;
-            _pieceManager = PieceManager3D.Instance;
+            _cameraManager = CameraManager.instance;
+            _boardManager = BoardManager3D.instance;
+            _pieceManager = PieceManager3D.instance;
 
             _cameraManager.setHomePos.Invoke(myColor);
 

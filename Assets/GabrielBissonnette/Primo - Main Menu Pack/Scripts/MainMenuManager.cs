@@ -39,7 +39,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] Color32 secondaryColor;
 
     [Header("Version")]
-    [Space(10)] [SerializeField] string version = "v.0105";
+    [Space(10)] [SerializeField] private string version = "v.0105";
 
     [Header("Texts")]
     [Space(10)] [SerializeField] string play = "Play";
@@ -257,9 +257,9 @@ public class MainMenuManager : MonoBehaviour
             quitText.text = quit;
 
         // Version number
-        versionText.gameObject.SetActive(showVersion);
+        /*versionText.gameObject.SetActive(showVersion);
         if (versionText != null)
-            versionText.text = version;
+            versionText.text = version;*/
 
         #endregion
 

@@ -37,7 +37,7 @@ namespace ChessScripts3D.Managers
             _camera = GetComponent<Camera>();
             _camTransform = transform;
             
-            _input = InputFeedback.Instance;
+            _input = InputFeedback.instance;
             
             setHomePos -= SetInitPos;
             setHomePos += SetInitPos;

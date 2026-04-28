@@ -5,22 +5,15 @@ namespace ChessScripts3D.Web
     [Serializable]
     public static class WebAPIData
     {
-        private const string _url = "https://3dchess.store";
-        private const string _socketUrl = "ws://3dchess.store";
-        public static string Url => _url;
-        public static string SocketUrl => _socketUrl;
+        private const string URL = "https://3dchess.store";
+        private const string SocketUrl = "ws://3dchess.store";
+        public static string GetURL() => URL;
+        public static string GetSocketURL() => SocketUrl;
         
         private const string AuthKey = "Authorization";
         private const string RefreshKey = "refreshToken";
 
-        public static string GetAuthKey()
-        {
-            return AuthKey;
-        }
-
-        public static string GetRefreshKey()
-        {
-            return RefreshKey;
-        }
+        public static string GetAuthKey() { return AuthKey; }
+        public static string GetRefreshKey() { return RefreshKey; }
     }
 }

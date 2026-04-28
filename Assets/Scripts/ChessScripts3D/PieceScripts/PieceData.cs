@@ -28,8 +28,8 @@ namespace ChessScripts3D.PieceScripts
 
         public void SetClickMask(string color)
         {
-            if (color == "Black") ClickInputs.Instance.pieceMask = LayerMask.GetMask("BlackPiece");
-            if (color == "White") ClickInputs.Instance.pieceMask = LayerMask.GetMask("WhitePiece");   
+            if (color == "Black") ClickInputs.instance.pieceMask = LayerMask.GetMask("BlackPiece");
+            if (color == "White") ClickInputs.instance.pieceMask = LayerMask.GetMask("WhitePiece");   
         }
 
         public Piece3D InstantiateWhitePiece(Piece piece)

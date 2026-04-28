@@ -19,7 +19,7 @@ namespace ChessScripts3D.Managers
 
         void Awake()
         {
-            _input = InputFeedback.Instance;
+            _input = InputFeedback.instance;
 
             _input.clicked += () =>
             {

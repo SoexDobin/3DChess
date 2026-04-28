@@ -48,13 +48,11 @@ namespace ChessScripts3D.Web
         {
             currentState = GameSocketState.Matching;
             
-            var auth = WebRequests.Instance.GetAuthorization();
+            var auth = WebRequests.instance.GetAuthorization();
 
-            socket = new WebSocket(WebAPIData.SocketUrl + $"/game/start?token={auth}");
+            socket = new WebSocket(WebAPIData.GetSocketURL() + $"/game/start?token={auth}");
 
             socket.Connect();
-            
-            Debug.Log("in");
         }
 
         public void OnDisable()
@@ -68,8 +66,6 @@ namespace ChessScripts3D.Web
             {
                 var datum = e.Data.Split(",");
                 
-                Debug.Log("in2");
-                
                 foreach (var data in datum)
                 {
                     var checkString = data;
@@ -77,18 +73,18 @@ namespace ChessScripts3D.Web
                     if (checkString.Contains("roomId"))
                     {
                         var actionObject = JsonUtility.FromJson<GetColor>(e.Data);
-                        GameManager.Instance.SetMyColor(actionObject);
+                        GameManager.instance.SetMyColor(actionObject);
                     }
                     else if (checkString.Contains("myInfo"))
                     {
                         var actionObject = JsonUtility.FromJson<GetUserInfo>(e.Data);
-                        GameManager.Instance.SetMyInfo(actionObject);
+                        GameManager.instance.SetMyInfo(actionObject);
                         
                     }
                     else if (checkString.Contains("matchedUserInfo"))
                     {
                         var actionObject = JsonUtility.FromJson<GetUserInfo>(e.Data);
-                        GameManager.Instance.SetOpponentInfo(actionObject);
+                        GameManager.instance.SetOpponentInfo(actionObject);
                     }
                 }
             }

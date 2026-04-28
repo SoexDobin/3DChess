@@ -14,7 +14,7 @@ namespace ChessScripts3D.Web
         {
             var jsonData = JsonUtility.ToJson(loginData, true);
 
-            using UnityWebRequest request = new UnityWebRequest($"{WebAPIData.Url}/auth/login", "GET");
+            using UnityWebRequest request = new UnityWebRequest($"{WebAPIData.GetURL()}/auth/login", "GET");
             byte[] jsonDataBytes = new UTF8Encoding().GetBytes(jsonData);
 
             request.uploadHandler = new UploadHandlerRaw(jsonDataBytes);

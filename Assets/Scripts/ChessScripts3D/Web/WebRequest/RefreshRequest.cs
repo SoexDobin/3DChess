@@ -10,7 +10,7 @@ namespace ChessScripts3D.Web
     {
         public IEnumerator RefreshReq(string refreshToken, Action<UnityWebRequest> req)
         {
-            using UnityWebRequest request = PostWwwForm($"{WebAPIData.Url}/auth/refresh", string.Empty);
+            using UnityWebRequest request = PostWwwForm($"{WebAPIData.GetURL()}/auth/refresh", string.Empty);
         
             request.SetRequestHeader(WebAPIData.GetRefreshKey(), refreshToken);
 

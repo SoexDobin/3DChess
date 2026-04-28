@@ -12,7 +12,7 @@ namespace ChessScripts3D.Web
     {
         public IEnumerator UserInfoReq(string auth, Action<UnityWebRequest> req)
         {
-            using UnityWebRequest request = Get($"{WebAPIData.Url}/user");
+            using UnityWebRequest request = Get($"{WebAPIData.GetURL()}/user");
             
             request.SetRequestHeader("Authorization", auth);
 

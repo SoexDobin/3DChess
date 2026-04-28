@@ -9,6 +9,7 @@ namespace ChessScripts3D.Web
         {
             var obj = FindObjectsOfType<System>();
             
+            
             if (obj.Length == 1)
             {
                 DontDestroyOnLoad(gameObject);
